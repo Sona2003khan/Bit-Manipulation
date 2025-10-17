@@ -1,0 +1,36 @@
+public class Bit_manipulation_count_set_bit_5 {
+
+    // Time Complexity: O(log n) -> each division by 2 reduces n
+    // Space Complexity: O(1) -> only primitive variables used
+    public static int count_no_of_set_bit_bruteforce(int n){
+        int count = 0;
+        while (n > 0) {
+            if(n % 2 == 1){
+                count++;
+            }
+            n = n / 2;
+        }
+        return count;
+    }
+
+    // Time Complexity: O(log n) -> each shift reduces n
+    // Space Complexity: O(1) -> only primitive variables used
+    public static int count_no_of_set_bit(int n){
+        int count = 0;
+        while (n > 0) {
+            count += (n & 1);
+            n = n >> 1;
+        }
+        return count;
+    }
+
+    // Main method
+    // Time Complexity: O(1)
+    // Space Complexity: O(1)
+    public static void main(String[] args) {
+        int n = 13;
+        
+        System.out.println(count_no_of_set_bit_bruteforce(n)); // 3
+        System.out.println(count_no_of_set_bit(n));           // 3
+    }
+}
