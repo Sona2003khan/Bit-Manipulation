@@ -1,0 +1,15 @@
+public class Bit_manipulation_power_2_4 {
+
+    
+    public static boolean powerOf2(int n){
+        return n > 0 && (n & (n - 1)) == 0;
+    }
+
+   
+    public static void main(String[] args) {
+        int n = 16;
+        System.out.println(powerOf2(n));  // Output: true
+    }
+}
+    // Time Complexity: O(1)
+    // Space Complexity: O(1)
