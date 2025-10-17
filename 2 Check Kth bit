@@ -1,0 +1,50 @@
+public class Bit_manipulation_ith_bit_set_2 {
+
+    // Brute force check: O(log n) because division by 2 in each step
+    static boolean checkKthBitbruteForce(int n, int k) {                      
+        int bit = (n / (int)Math.pow(2, k)) % 2;
+        return bit == 1;
+    }
+
+    // Check if kth bit is 1 using bitwise: O(1)
+    static boolean checkKthBit(int n, int k) {                          
+        if (k < 0 || k >= 31) return false;
+        return (n & (1 << k)) != 0;
+    }
+
+    // Set kth bit to 1 using bitwise: O(1)
+    static int setKthBit(int n, int k) {                            
+        if (k < 0 || k >= 31) return 0;
+        return (n | (1 << k));
+    }
+
+    // Clear kth bit to 0 using bitwise: O(1)
+    static int clearKthBit(int n, int k) {                            
+        if (k < 0 || k >= 31) return 0;
+        return (n & ~(1 << k));
+    }
+
+    // Toggle kth bit using bitwise: O(1)
+    static int toggleKthBit(int n, int k) {                            
+        if (k < 0 || k >= 31) return 0;
+        return (n ^ (1 << k));
+    }
+
+    // Remove last set bit using n & (n-1): O(1)
+    static int removeLastSetBit(int n, int k) {                            
+        if (k < 0 || k >= 31) return 0;
+        return (n & (n - 1));
+    }
+
+    public static void main(String[] args) {
+        int n = 13;
+        int k = 2;
+
+        System.out.println(checkKthBitbruteForce(n, k)); // O(log n)
+        System.out.println(checkKthBit(n, k));           // O(1)
+        System.out.println(setKthBit(n, k));             // O(1)
+        System.out.println(clearKthBit(n, k));           // O(1)
+        System.out.println(toggleKthBit(n, k));          // O(1)
+        System.out.println(removeLastSetBit(n, k));      // O(1)
+    }
+}
