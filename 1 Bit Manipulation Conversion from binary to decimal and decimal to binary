@@ -1,0 +1,40 @@
+import java.util.Arrays;
+
+public class Bit_manipulation_1 {
+
+    // Time Complexity: O(log n) -> divides n by 2 until 0
+    // Space Complexity: O(log n) -> storing binary digits in StringBuilder
+    public static char[] dec_to_binary(int n){
+        if (n == 0) return new char[]{'0'};
+        StringBuilder ans = new StringBuilder();
+        while (n > 0) {
+            // Check LSB using bitwise AND
+            ans.append((n & 1) == 1 ? '1' : '0');
+            n = n >> 1; // Right shift by 1
+        }
+        return ans.reverse().toString().toCharArray();
+    }
+
+    // Convert binary string to decimal using bitwise
+    // Time Complexity: O(len) -> iterates through binary string
+    // Space Complexity: O(1) -> uses only primitive variables
+    public static int binary_to_dec(String s){
+        int ans = 0;
+        for (int i = 0; i < s.length(); i++){
+            ans = (ans << 1) | (s.charAt(i) - '0'); // Shift left and add current bit
+        }
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        int num = 13;
+
+        // Decimal to binary
+        char[] result = dec_to_binary(num);
+        System.out.println(Arrays.toString(result)); // Output: [1, 1, 0, 1]
+
+        // Binary to decimal
+        String s = "1101";
+        System.out.println(binary_to_dec(s));       // Output: 13
+    }
+}
