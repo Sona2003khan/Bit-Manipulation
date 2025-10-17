@@ -1,0 +1,15 @@
+public class Bit_manipulation_no_odd_even_3 {
+
+    public static boolean noEvenOrNot(int n){
+        if((n & 1) == 0){                              //last bit of odd binary no is always 1
+            return true;
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        int n=14;
+        System.out.println(noEvenOrNot(n));
+    }
+}
+    // Time Complexity: O(1), Space Complexity: O(1)
