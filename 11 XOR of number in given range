@@ -1,0 +1,30 @@
+public class Bit_manipulation_XOR_of_range_11 {
+
+    // Function to compute XOR from 0 to n
+    public static int xor(int n) {
+        if (n % 4 == 0) return n;
+        if (n % 4 == 1) return 1;
+        if (n % 4 == 2) return n + 1;
+        return 0; // n % 4 == 3
+    }
+
+    // Function to compute XOR of numbers from l to r
+    public static int xorRange(int l, int r) {
+        return xor(r) ^ xor(l - 1);
+    }
+
+    public static void main(String[] args) {
+        int l = 3;
+        int r = 5;
+
+        System.out.println(xorRange(l, r)); // Output: 2
+    }
+}
+
+/*
+⏱️ Time Complexity: O(1)
+   - Computing XOR from 0 to n is constant time using the formula
+💾 Space Complexity: O(1)
+   - Uses only a few integer variables, no extra space
+🧮 Output: 2
+*/
