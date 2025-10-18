@@ -1,0 +1,36 @@
+public class Bit_manipulation_flip_no1_no2_8 {
+
+    public static int flip_firts_to_sec_no(int start, int goal) {
+
+        int count = 0;
+        int ans = start ^ goal;  // XOR highlights differing bits
+
+        // Check each bit position (0 to 31 for a 32-bit integer)
+        for (int i = 0; i <= 31; i++) {
+            if ((ans & (1 << i)) != 0) {  // If i-th bit is 1
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        int start = 3;
+        int goal = 4;
+
+        System.out.println(flip_firts_to_sec_no(start, goal)); // Output: 3
+    }
+}
+
+/*
+
+start = 3  → binary 011
+goal  = 4  → binary 100
+Bits that differ → positions 0, 1, and 2 → total 3 flips.
+
+⏱️ Time Complexity: O(32) → O(1)
+   (We always loop through 32 bits, constant time)
+
+💾 Space Complexity: O(1)
+   (Uses only a few integer variables)
+*/
