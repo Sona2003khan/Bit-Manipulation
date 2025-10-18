@@ -1,0 +1,24 @@
+public class Bit_manipulation_single_number_9 {
+
+    public static int singleNumber(int[] nums) {
+        int n = nums.length;
+        int xor = 0;
+
+        // XOR all numbers — duplicates cancel out (a ^ a = 0)
+        for (int i = 0; i < n; i++) {
+            xor = xor ^ nums[i];
+        }
+        return xor;  // remaining number is the single one
+    }
+
+    public static void main(String[] args) {
+        int nums[] = {4, 5, 7, 3, 7, 5, 4, 3, 8};
+        System.out.println(singleNumber(nums)); // Output: 8
+    }
+}
+
+/*
+⏱️ Time Complexity: O(n)
+💾 Space Complexity: O(1)
+🧮 Output: 8
+*/
