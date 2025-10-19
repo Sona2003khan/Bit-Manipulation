@@ -6,7 +6,7 @@ public class Bit_manipulation_1 {
     // Space Complexity: O(log n) -> storing binary digits in StringBuilder
     public static char[] dec_to_binary(int n){
         if (n == 0) return new char[]{'0'};
-        StringBuilder ans = new StringBuilder();
+        StringBuilder ans = new StringBuilder(); 
         while (n > 0) {
             // Check LSB using bitwise AND
             ans.append((n & 1) == 1 ? '1' : '0');
