@@ -1,0 +1,76 @@
+import java.util.List;
+import java.util.ArrayList;
+
+public class Bit_manupulation_check_prime_12 {
+    
+    // Function to find prime factors of a single number
+    public static List<Integer> prime_divides_no(int nums){
+        List<Integer> list = new ArrayList<>();
+
+        for(int i = 2; i <= nums; i++){
+            while (nums % i == 0) {
+                if(prime(i)){
+                    list.add(i); // Add prime factor
+                }
+                nums = nums / i; // Reduce number
+            }
+        }
+        return list;
+    }
+
+    // Function to find prime factors for an array of numbers
+    public static List<List<Integer>> prime_Divides_arr_no(int nums[]){
+        List<List<Integer>> result = new ArrayList<>();
+
+        for(int ans : nums){
+            result.add(prime_divides_no(ans));
+        }
+        return result;
+    }
+
+    // Check if a number is prime
+    public static boolean prime(int n){
+        for(int i = 2; i * i <= n; i++){
+            if(n % i == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        int num = 780;
+        System.out.println(prime_divides_no(num)); 
+        /*
+         Output:
+         [2, 2, 3, 5, 13]
+        */
+
+        int nums[] = {2, 3, 4, 5, 6};
+        System.out.println(prime_Divides_arr_no(nums));
+        /*
+         Output:
+         [[2], [3], [2, 2], [5], [2, 3]]
+        */
+
+        /*
+         Time Complexity:
+         prime_divides_no(n):
+           - Outer loop runs up to n
+           - Inside while loop, number reduces after each division
+           - Prime check inside loop takes O(√i)
+           => Worst-case: O(n * √n)
+         
+         prime_Divides_arr_no(nums):
+           - Calls prime_divides_no() for each element in array
+           - Let m = array size, n = max number
+           => Time Complexity: O(m * n * √n)
+
+         Space Complexity:
+         - Stores all prime factors in a list
+         - Maximum prime factors for number n ≈ log₂(n)
+         => Space Complexity per number: O(log n)
+         - For array: O(m * log n)
+        */
+    }
+}
