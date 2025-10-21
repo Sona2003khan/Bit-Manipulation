@@ -1,0 +1,42 @@
+import java.util.Arrays;
+
+public class Bit_manipulation_sieves_of_erosthenes_13 {
+
+    public static int countPrimes(int n) {
+
+        if (n <= 2) return 0;
+
+        int arr[] = new int[n];           // Space complexity: O(n)
+        Arrays.fill(arr, 1);
+        arr[0] = arr[1] = 0;
+
+        // Sieve of Eratosthenes
+        for(int i = 2; i * i < n; i++){  // Outer loop runs roughly √n times
+            if(arr[i] == 1){
+                for(int j = i * i; j < n; j += i){  // Inner loop marks multiples
+                    arr[j] = 0;
+                }
+            }
+        }
+
+        int count = 0;
+        for(int i = 2; i < arr.length; i++){
+            if(arr[i] == 1){
+                count++;
+            }
+        }
+
+        return count; // Returns number of primes less than n
+    }
+
+    public static void main(String[] args) {
+        int n = 10;
+        System.out.println(countPrimes(n)); // Output: 4
+    }
+}
+
+/*
+Time Complexity: O(n log log n) — typical for Sieve of Eratosthenes
+Space Complexity: O(n) — for the boolean/int array storing prime markers
+Output for n = 10: 4 (primes are 2, 3, 5, 7)
+*/
